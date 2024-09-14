@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="container d-flex justify-content-center">
+            <div class="container">
+                <div class="text-center mt-5">
+                    <h1 style="font-weight: bold;">Weather App</h1>
+                    <h2>With OpenWeather API</h2>
+                    <h3 class="pt-3">
+                        Get Weather Forecast
+                    </h3>
+
+                    <form action="/getWeather" method="POST">
+                        <div class="container mt-5">
+                            <div class="row">
+                                <div class="col-12">
+                                    <input class="input" type="text" id="cityName" placeholder="Enter City Name"
+                                        name="cityName">
+                                </div>
+                                <div class="col-12 pt-2">
+                                    <input class="input" type="text" id="countryCode" placeholder="Enter Country Code"
+                                        name="countryCode">
+                                </div>
+                                <div class="col pt-4">
+                                    <input class="button" type="submit" value="Submit">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <% if (error) { %>
+                        <div class="alert alert-danger mt-3">
+                            <%= error %>
+                        </div>
+                        <% } %>
+
+                            <% if (weatherData) { %>
+                                <div class="container mt-5">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12 pt-3">
+                                            <div class="card" id="card">
+                                                <div class="card-body tbody">
+                                                    <h5 class="card-title">Weather</h5>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col text-start">
+                                                                <p class="card-text"><strong>Parameters: </strong>
+                                                                    <%= weatherData.weather[0].main %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Description: </strong>
+                                                                    <%= weatherData.weather[0].description %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Temperature: </strong>
+                                                                    <%= weatherData.main.temp %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Feels Like: </strong>
+                                                                    <%= weatherData.main.feels_like %>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col text-start">
+                                                                <p class="card-text"><strong>Min Temperature: </strong>
+                                                                    <%= weatherData.main.temp_min %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Max Temperature: </strong>
+                                                                    <%= weatherData.main.temp_max %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Pressure: </strong>
+                                                                    <%= weatherData.main.pressure %>
+                                                                </p>
+                                                                <p class="card-text"><strong>Humidity: </strong>
+                                                                    <%= weatherData.main.humidity %>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12 pt-3">
+                                            <div class="card" id="card">
+                                                <div class="card-body tbody">
+                                                    <h5 class="card-title">Suggestion and Caution</h5>
+                                                    <p class="card-text">
+                                                        <%= suggestion %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

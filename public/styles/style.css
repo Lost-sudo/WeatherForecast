@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  background-image: url("images/background.jpg");
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.input {
+    background: transparent;
+    border: 3px solid black;
+    border-radius: 8px;
+    height: 50px;
+    width: 400px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.button {
+    background: transparent;
+    border: 3px solid black;
+    border-radius: 20px;
+    height: 40px;
+    width: 100px;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+
+#card {
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid black;
+    height: 250px;
+}
+
+.tbody h5 {
+    font-weight: bold;
+}
+
+@media (max-width: 540px) {
+    .input {
+        width: 250px;
+    }
+    #card {
+        height: 350px;
+    }
+    
+}
